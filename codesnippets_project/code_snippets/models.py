@@ -1,5 +1,7 @@
 from django.db import models
+from users import User
 # Create your models here.
 
 class Snippet(models.Model):
-    pass
+    snippet_text = models.CharField(max_length=255, null=False, blank=False)
+    user = models.ManyToManyField(User)
