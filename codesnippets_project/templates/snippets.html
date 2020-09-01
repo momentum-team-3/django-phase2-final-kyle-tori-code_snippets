@@ -1,1 +1,10 @@
-{% extends "base.html" %}
+{% extends "base.html"%} 
+
+{% block content %}
+
+<h1>Welcome to Code Snippets!</h1><br>
+<a href="{% url 'register' %}">Click here to Register</a><br><br>
+<p> For returning users:</p>
+<a href="{% url 'login' %}">Click here to Log in</a><br>
+    
+{% endblock %}
