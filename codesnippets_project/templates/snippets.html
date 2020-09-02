@@ -2,10 +2,15 @@
 
 {% block content %}
 
-<h1>Welcome to Rex: A Modern Code Snippets Manager</h1><br><br>
+
+<h1>Welcome to Rex: A Modern Code Snippets Manager</h1>
+    
+<br><br>
 {% block nav %}
+<l>
 <a href="{% url 'login' %}">Login</a>
 <a href="{% url 'register' %}">Register</a>
+</l>
 {% endblock %}
 
 

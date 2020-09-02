@@ -1,17 +1,35 @@
 html {
-    background-color: darkslategray; 
+    box-sizing: border-box;
+    background-image: url("white-and-black-marble-background-vector-23226744.jpg");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
 }
+
+main {
+    background-image: url("gold-metallic-background-vector-8393061.jpg");
+    display: ruby;
+    
+    
+   
+}
+
 
 h1 {
 
     font-size: x-large;
-    font-family: Arial, Helvetica, sans-serif;
-    border-top: 10px;
-    border-left: 10px;
-    border-right: 10px;
-    border-bottom: 10px;
-    color: whitesmoke;    
-    text-align: justify;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    color: rgb(8, 8, 34); 
+    border-style:double;
+    border-color: whitesmoke;
+    border-block-end-width: 10px;
+    border-block-start-width: 5px;
+    align-items: center;
+    text-align: center;
 }
 
 #snippet {
@@ -21,3 +39,4 @@ h1 {
 #title, #language {
     color: whitesmoke;
 }
+
