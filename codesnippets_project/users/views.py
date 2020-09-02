@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
+from django.contrib.auth.models import AnonymousUser
+from .models import User
 # Create your views here.
 
 def register(request):
@@ -16,14 +18,27 @@ def register(request):
     else:
         form = UserCreationForm()
     
-    return render(request, 'userprofile.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 def login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect(to='userprofile.html')
+    retry = False
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect(to='userprofile.html')
+        else:
+            retry = False
+    return render(request, 'login.html', {'retry': retry})
+        
+        
+
+def logout(request, pk):
+    if request.user is not isinstance(request.user, AnonymousUser):
+        pass
     else:
-        return redirect(to='login.html')
+        # user = User.objects.get(pk=pk)
+        logout(request)
+        return redirect(to='snippets.html')

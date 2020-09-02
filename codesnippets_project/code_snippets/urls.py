@@ -1,7 +1,8 @@
 from django.urls import path, include
-from .views import snippets
+from . import views
 
 urlpatterns = [
-    path('', snippets, name='snippets'),
+    path('', views.snippets, name='snippets'),
+    path('<int:pk>/', views.userprofile, name='userprofile'),
     
 ]
