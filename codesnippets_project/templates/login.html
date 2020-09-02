@@ -1,9 +1,10 @@
 {% extends "base.html"%} 
 
 {% block content %}
-{% if retry %}
+<!-- {% if retry %}
 <p id="invalid_login">Invalid Username or Password</p>
-{% endif %}
+{% endif %} -->
+<!-- <p><a href="{% url 'snippets' %}"> Back to Snippets</a></p><br>
 <h1> Enter login info here </h1>
 <form action="POST">
     {% csrf_token %}
@@ -15,5 +16,5 @@
 </form>
 <div>
 <a href="{% url 'register' %}">Click here to Register</a>
-</div>
+</div> -->
 {% endblock %}

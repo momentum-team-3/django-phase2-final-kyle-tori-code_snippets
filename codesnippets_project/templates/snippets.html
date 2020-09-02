@@ -4,8 +4,11 @@
 
 <h1>Welcome to Code Snippets!</h1><br>
 
-<a href="{% url 'register' %}">Click here to Register</a><br><br>
-<p> For returning users:</p>
-<a href="{% url 'login' %}">Click here to Log in</a><br>
-    
+
+{% for snippit in snippits %}
+
+<p>{{snippit.snippet_text}}</p>
+
+{% endfor %}
+
 {% endblock %}
