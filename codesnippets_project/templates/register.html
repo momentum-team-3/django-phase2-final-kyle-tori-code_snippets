@@ -5,6 +5,10 @@
 
 
 <h1> Register Here </h1>
-    {% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create Account">
+    </form>
     
 {% endblock %}
