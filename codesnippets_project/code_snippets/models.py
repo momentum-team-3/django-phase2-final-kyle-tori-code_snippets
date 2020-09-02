@@ -3,5 +3,7 @@ from users.models import User
 # Create your models here.
 
 class Snippet(models.Model):
-    snippet_text = models.CharField(max_length=255, null=False, blank=False)
+    snippet_title = models.CharField(max_length=100, null=True, blank=True)
+    snippet_text = models.TextField(max_length=1500, null=False, blank=False)
+    snippet_lang = models.CharField(max_length=100, null=False, blank=False)
     user = models.ManyToManyField(User)

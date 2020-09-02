@@ -2,13 +2,18 @@
 
 {% block content %}
 
-<h1>Welcome to Code Snippets!</h1><br>
+<h1>Welcome to Rex: A Modern Code Snippets Manager</h1><br><br>
 
 
-{% for snippit in snippits %}
 
-<p>{{snippit.snippet_text}}</p>
-
+{% for snippet in snippets %}
+{% if snippet.snippet_title %}
+<div>
+     <strong>Snippet title: {{snippet.snippet_title}}</strong>
+</div>
+{% endif %}
+<p id="snippet">{{snippet.snippet_text}}</p>
+<p>Language: {{snippet.snippet_lang}}</p><br><br>
 {% endfor %}
 
 {% endblock %}
