@@ -4,8 +4,10 @@
 
 <h1>Welcome to Rex: A Modern Code Snippets Manager</h1><br><br>
 {% block nav %}
-<a href="{% url 'login' %}">Login</a>
-<a href="{% url 'register' %}">Register</a>
+<span class="link"><a href="{% url 'userprofile' pk=user.pk %}">Profile</a></span>
+<span class="link"><a href="{% url 'snippets' %}">Logout</a></span>
+<span class="link"><a href="{% url 'login' %}">Login</a></span>
+<span class="link"><a href="{% url 'register' %}">Register</a></span>
 {% endblock %}
 
 
