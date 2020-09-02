@@ -3,7 +3,10 @@
 {% block content %}
 
 <h1>Welcome to Rex: A Modern Code Snippets Manager</h1><br><br>
-
+{% block nav %}
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'register' %}">Register</a>
+{% endblock %}
 
 
 {% for snippet in snippets %}
