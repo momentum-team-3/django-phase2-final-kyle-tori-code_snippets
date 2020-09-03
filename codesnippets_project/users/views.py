@@ -35,10 +35,6 @@ def login(request):
         
         
 
-def logout(request, pk):
-    if request.user is not isinstance(request.user, AnonymousUser):
-        pass
-    else:
-        # user = User.objects.get(pk=pk)
-        logout(request)
-        return redirect(to='snippets.html')
+def logout(request):
+    logout(request)
+    return render(request, 'snippets.html')

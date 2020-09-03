@@ -8,7 +8,7 @@ from django.http import HttpResponse
 # Create your views here.
 def snippets(request):
     snippets = Snippet.objects.all()
-    return render(request, 'snippets.html', {'snippets': snippets})
+    return render(request, 'snippets.html', {'snippets': snippets, 'user':request.user})
 
 def userprofile(request, pk):
     if not request.user.is_authenticated:

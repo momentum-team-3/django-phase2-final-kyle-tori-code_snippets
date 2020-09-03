@@ -6,6 +6,7 @@
 {% block nav %}
 <span class="link"><a href="{% url 'userprofile' pk=user.pk %}">Profile</a></span>
 <span class="link"><a href="{% url 'snippets' %}">Logout</a></span>
+
 <span class="link"><a href="{% url 'login' %}">Login</a></span>
 <span class="link"><a href="{% url 'register' %}">Register</a></span>
 {% endblock %}
