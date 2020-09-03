@@ -2,13 +2,23 @@
 
 {% block content %}
 
-<h1>Welcome to Rex: A Modern Code Snippets Manager</h1><br><br>
+
+<h1>Welcome to Rex: A Modern Code Snippets Manager</h1>
+    
+<br><br>
 {% block nav %}
+<<<<<<< HEAD
+<l>
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'register' %}">Register</a>
+</l>
+=======
 <span class="link"><a href="{% url 'userprofile' pk=user.pk %}">Profile</a></span>
 <span class="link"><a href="{% url 'snippets' %}">Logout</a></span>
 
 <span class="link"><a href="{% url 'login' %}">Login</a></span>
 <span class="link"><a href="{% url 'register' %}">Register</a></span>
+>>>>>>> 5a3eaa453ebc5a3b8e4cd69ab0688289e3fd970a
 {% endblock %}
 
 
