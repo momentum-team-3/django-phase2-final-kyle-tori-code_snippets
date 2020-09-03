@@ -1,4 +1,5 @@
 html {
+    background-color: darkslategray; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -13,10 +14,7 @@ h1 {
 
     font-size: x-large;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
     color: rgb(8, 8, 34); 
-    border-style:double;
-    border-color: whitesmoke;
     border-block-end-width: 10px;
     border-block-start-width: 5px;
     align-items: center;

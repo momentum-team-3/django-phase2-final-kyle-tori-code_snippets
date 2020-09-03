@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+
+
 from pathlib import Path
 
 import environ
@@ -18,6 +20,7 @@ env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False), )
 environ.Env.read_env()
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,6 +33,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
+AUTH_USER_MODEL = 'users.User'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -49,7 +53,7 @@ INSTALLED_APPS = [
     'users',
 ]
 
-AUTH_USER_MODEL = 'users.User'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

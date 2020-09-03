@@ -1,26 +1,30 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
 from django.contrib.auth.models import AnonymousUser
-from .models import User
+from django.contrib import messages
+from .forms import NewUserCreationForm, ChangeUserForm
 # Create your views here.
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = NewUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password')
+            raw_password = form.cleaned_data.get('password2')
             user = authenticate(username=username, password=raw_password)
+            messages.success(request, 'Account created successfully')
             login(request, user)
-            return redirect(to='snippets.html')
+            return redirect(to='register')
     else:
-        form = UserCreationForm()
-    
-    return render(request, 'register.html', {'form': form})
+        form = NewUserCreationForm()
+        if form.is_valid():
+            form.save()
+            return redirect(to='snippets')
 
-def login(request):
+    return render(request, 'register.html', {'form': form, 'message': messages})
+
+def login_user(request):
     retry = False
     if request.method == "POST":
         username = request.POST['username']
@@ -28,13 +32,13 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(to='userprofile.html')
+            return redirect(to='userprofile')
         else:
             retry = False
     return render(request, 'login.html', {'retry': retry})
         
         
 
-def logout(request):
+def logout_user(request):
     logout(request)
-    return render(request, 'snippets.html')
+    return redirect(to='snippets')

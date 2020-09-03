@@ -7,11 +7,14 @@
     
 <br><br>
 {% block nav %}
+{% if logged_in %}
 <span class="link"><a href="{% url 'userprofile' pk=user.pk %}">Profile</a></span>
 <span class="link"><a href="{% url 'snippets' %}">Logout</a></span>
-
+{% endif %}
+{% if not logged_in %}
 <span class="link"><a href="{% url 'login' %}">Login</a></span>
 <span class="link"><a href="{% url 'register' %}">Register</a></span>
+{% endif %}
 {% endblock %}
 
 
