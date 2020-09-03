@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
 from django.contrib import messages
 from .forms import NewUserCreationForm, ChangeUserForm
+from code_snippets.models import Snippet
+from .models import User
 # Create your views here.
 
 def register(request):
@@ -15,7 +17,7 @@ def register(request):
             user = authenticate(username=username, password=raw_password)
             messages.success(request, 'Account created successfully')
             login(request, user)
-            return redirect(to='register')
+            return redirect(to='snippets')
     else:
         form = NewUserCreationForm()
         if form.is_valid():
@@ -34,11 +36,17 @@ def login_user(request):
             login(request, user)
             return redirect(to='userprofile')
         else:
-            retry = False
-    return render(request, 'login.html', {'retry': retry})
-        
-        
+            retry = True
+    return render(request, 'login_user.html', {'retry': retry})
 
 def logout_user(request):
     logout(request)
-    return redirect(to='snippets')
+    return render(request, 'logout_user.html')
+
+
+def userprofile(request, pk):
+    if not request.user.is_authenticated:
+        return redirect(to='login_user')
+    user = User.objects.get(pk=pk)
+    snippets = Snippet.objects.filter(user=user)
+    return render(request, 'userprofile.html', {'user': user, 'snippets': snippets})
