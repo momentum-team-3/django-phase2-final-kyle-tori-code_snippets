@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import AnonymousUser
 from django.contrib import messages
 from .forms import NewUserCreationForm, ChangeUserForm
@@ -34,7 +35,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(to='userprofile')
+            return redirect(to='userprofile', pk=user.pk)
         else:
             retry = True
     return render(request, 'login_user.html', {'retry': retry})

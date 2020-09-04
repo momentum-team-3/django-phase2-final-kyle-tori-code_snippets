@@ -1,29 +1,28 @@
-{% extends "base.html"%} 
-
-{% block content %}
-<p><a class="link" href="{% url 'snippets' %}"> Back to Snippets</a></p><br>
-<h1> Enter login info here </h1>
+{% extends "base.html"%} {% block content %}
+<p><a class="link" href="{% url 'snippets' %}"> Back to Snippets</a></p>
+<br />
+<h1>Enter login info here</h1>
 
 {% if retry %}
-<p style="color:red;font-weight:bold;">Invalid username/password combination.</p>
+<p style="color:red;font-weight:bold;">
+  Invalid username/password combination.
+</p>
 {% endif %}
 
-<form action="POST">
-    {% csrf_token %}
-    <p>
-        <label for="username">Username:</label>
-        <input type="text" name="username">
-    </p>
-    <p>
-        <label for="password">Password:</label>
-        <input type="password" name="password">
-    </p>
-    <div>
-        <input type="submit" value="login" />
-    </div>
+<form method="POST">
+  {% csrf_token %}
+  <p>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" />
+  </p>
+  <p>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" />
+  </p>
+  <input type="submit" value="login" />
 </form>
 <div>
-    <p>No account? Register below.</p>
-<a class="link" href="{% url 'register' %}">Click here to Register</a>
+  <p>No account? Register below.</p>
+  <a class="link" href="{% url 'register' %}">Click here to Register</a>
 </div>
 {% endblock %}

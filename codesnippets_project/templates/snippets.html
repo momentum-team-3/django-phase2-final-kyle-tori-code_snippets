@@ -20,12 +20,12 @@
 
 {% for snippet in snippets %}
 {% if snippet.snippet_title %}
-<div id="title">
-     <strong>Snippet title: {{snippet.snippet_title}}</strong>
-</div>
+<p id="title">
+     <strong>{{snippet.snippet_title}}</strong>
+</p>
 {% endif %}
 <p id="snippet">{{snippet.snippet_text}}</p>
-<p id="language">Language: {{snippet.snippet_lang}}</p><br><br>
+<p id="language">Language: {{snippet.snippet_lang}}</p><br>
 {% endfor %}
 
 {% endblock %}
