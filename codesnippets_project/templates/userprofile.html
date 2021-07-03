@@ -1,0 +1,18 @@
+{% extends "base.html"%} 
+
+{% block content %}
+<p><a class="link" href="{% url 'snippets' %}"> Back to Snippets</a></p><br>
+
+<h1> Hello {{ user }}, welcome to your Snippets </h1>
+
+{% for snippet in snippets %}
+{% if snippet.snippet_title %}
+<p id="title">
+     <strong>{{snippet.snippet_title}}</strong>
+</p>
+{% endif %}
+<p id="snippet">{{snippet.snippet_text}}</p>
+<p id="language">Language: {{snippet.snippet_lang}}</p><br>
+{% endfor %}
+    
+{% endblock %}

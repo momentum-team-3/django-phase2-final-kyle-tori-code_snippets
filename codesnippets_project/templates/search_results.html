@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+<h1>Search Results</h1>
+
+{% block content %}
+{% for result in results %}
+<p>{{ result.snippet_title }}</p>
+<p>{{ result.snippet_text }}</p>
+<p>{{ result.snippet_lang }}</p>
+<hr />
+{% endfor %}
+{% endblock %}

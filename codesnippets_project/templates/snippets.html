@@ -1,0 +1,30 @@
+{% extends "base.html"%} 
+
+{% block content %}
+
+
+<h1>Welcome to Rex: A Modern Code Snippets Manager</h1>
+    
+<br><br>
+{% block nav %}
+{% if logged_in %}
+<span class="link"><a href="{% url 'userprofile' pk=user.pk %}">Profile</a></span>
+<span class="link"><a href="{% url 'logout_user' %}">Logout</a></span>
+{% endif %}
+{% if not logged_in %}
+<span class="link"><a href="{% url 'login_user' %}">Login</a></span>
+<span class="link"><a href="{% url 'register' %}">Register</a></span>
+{% endif %}
+{% endblock %}
+
+{% for snippet in snippets %}
+{% if snippet.snippet_title %}
+<p id="title">
+     <strong>{{snippet.snippet_title}}</strong>
+</p>
+{% endif %}
+<p id="snippet">{{snippet.snippet_text}}</p>
+<p id="language">Language: {{snippet.snippet_lang}}</p><br>
+{% endfor %}
+
+{% endblock %}
